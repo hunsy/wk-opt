@@ -1,0 +1,26 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+#app {
+    min-height: 100%;
+    background-color: #efefef;
+}
+
+.bread-box {
+    background-color: #efefef;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.search-form {
+    width: 100%;
+    padding: 20px;
+}
+
+.main-box {
+    position: fixed;
+    top: 70px;
+    right: 0px;
+    left: 201px;
+}
