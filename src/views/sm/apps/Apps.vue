@@ -42,26 +42,38 @@
           <el-button-group>
             <el-button
               type="primary"
-              size="small"
+              size="mini"
               icon="el-icon-edit"
               @click="handleEdit(scope.$index, scope.row.id)"
             >编辑</el-button>
             <el-button
-              type="danger"
-              size="small"
-              icon="el-icon-delete"
-              @click="handleDelete(scope.$index, scope.row)"
-            >删除</el-button>
-            <el-button
               type="warning"
-              size="small"
+              size="mini"
               icon="el-icon-delete"
               @click="handleCfg(scope.row.id)"
             >配置信息</el-button>
+            <el-button
+              type="danger"
+              size="mini"
+              icon="el-icon-delete"
+              @click="handleDelete(scope.$index, scope.row)"
+            >删除</el-button>
           </el-button-group>
         </template>
       </el-table-column>
     </el-table>
+
+    <div class="pagination-container flex-center">
+      <div class="total-num">共{{total}}条</div>
+      <el-pagination
+        background
+        :page-sizes="[1,10,20,30, 50]"
+        :page-size="pageSize"
+        @current-change="handleCurrentChange"
+        layout="prev, pager, next"
+        :total="total"
+      ></el-pagination>
+    </div>
 
     <el-dialog title="配置信息" v-if="cfgDialogVisiable" :visible.sync="cfgDialogVisiable" width="50%">
       <p>请输入JSON格式的配置信息</p>
@@ -106,6 +118,9 @@ export default {
     return {
       searchModel: {},
       isSearching: false,
+      pageNo: 1,
+      pageSize: 10,
+      total: 0,
       tableData: [],
       code: "",
       cmOptions: {
@@ -165,6 +180,11 @@ export default {
         console.log(e);
       });
       this.tableData = data.dataResult;
+      this.total = data.totalNum;
+    },
+    handleCurrentChange(pageNo) {
+      this.pageNo = pageNo;
+      this.loadPage();
     },
     addApp() {
       this.dialogFormVisible = true;
@@ -188,6 +208,14 @@ export default {
       });
       return data;
     },
+    async handleEdit(idx, id) {
+      const d = await this.loadAppInfo(id);
+      if (d) {
+        this.code = d.cfg;
+      }
+      this.form = d;
+      this.dialogFormVisible = true;
+    },
     onSubmit(formName) {
       this.$refs[formName].validate(async valid => {
         if (valid) {
@@ -202,28 +230,6 @@ export default {
           }
           this.dialogFormVisible = false;
           this.loadPage();
-          // if (this.form.id) {
-          //   updateApp(this.form).then(
-          //     res => {
-          //       console.log(33, res);
-          //       this.dialogFormVisible = false;
-          //       this.loadPage();
-          //     },
-          //     error => {
-          //       this.dialogFormVisible = false;
-          //     }
-          //   );
-          // } else {
-          //   saveApp(this.form).then(
-          //     res => {
-          //       this.dialogFormVisible = false;
-          //       this.loadPage();
-          //     },
-          //     error => {
-          //       console.log(44, error);
-          //     }
-          //   );
-          // }
         } else {
           console.log("validate error");
         }

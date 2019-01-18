@@ -24,3 +24,11 @@ body {
     right: 0px;
     left: 201px;
 }
+
+.pagination-container {
+    padding: 0px 20px;
+}
+
+.total-num {
+    padding: 10px 15px;
+}

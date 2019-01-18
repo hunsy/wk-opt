@@ -17,7 +17,6 @@ import regular from '@fortawesome/fontawesome-free-regular'
 import brands from '@fortawesome/fontawesome-free-brands'
 import { getToken } from '@/utils/auth'
 import VueCodemirror from 'vue-codemirror'
-
 // require styles
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/darcula.css'
@@ -29,6 +28,15 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(ElementUI)
 Vue.use(VueCodemirror)
+
+import * as filters from './filters' // global filters
+console.log("filters:", filters);
+
+// register global utility filters.
+Object.keys(filters).forEach(key => {
+  console.log("key", key);
+  Vue.filter(key, filters[key])
+})
 Vue.config.productionTip = false
 
 //进行登录拦截

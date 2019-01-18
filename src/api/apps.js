@@ -1,5 +1,5 @@
 import axios from '@/utils/request'
-const Base = `/v1/app`
+const Base = `/app/v1`
 
 /**
  * 获取应用分页

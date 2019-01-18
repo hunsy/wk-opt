@@ -34,14 +34,14 @@
           <span>管理员管理</span>
         </el-menu-item>
 
-        <el-menu-item index="2-2">&nbsp;&nbsp;&nbsp;&nbsp;
+        <el-menu-item index="rolesManager">&nbsp;&nbsp;&nbsp;&nbsp;
           <font-awesome-icon icon="cog"/>
           <span>角色管理</span>
         </el-menu-item>
 
-        <el-menu-item index="2-2">&nbsp;&nbsp;&nbsp;&nbsp;
+        <el-menu-item index="resourcesManager">&nbsp;&nbsp;&nbsp;&nbsp;
           <font-awesome-icon icon="cog"/>
-          <span>资源管理</span>
+          <span>权限资源管理</span>
         </el-menu-item>
       </el-submenu>
     </el-menu>
@@ -72,7 +72,7 @@ export default {
   left: 0;
   min-height: 100%;
   background-color: #324057;
-  z-index: 99;
+  z-index: 0;
 }
 .fa-margin {
   margin-right: 5px;
@@ -93,6 +93,7 @@ export default {
   min-width: 180px;
 }
 .el-menu {
+  border-right: none;
   .el-menu-item {
     padding-left: 20px !important;
   }

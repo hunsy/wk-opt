@@ -5,7 +5,7 @@ Vue.use(Router)
 
 import { Login, Page404, Dashboard, NavSelPage } from '../views/common'
 import Layout from '../views/layout/layout'
-import { AppsManager, AdminsManager } from '../views/sm'
+import { AppsManager, AdminsManager, RolesManager, ResourcesManager } from '../views/sm'
 
 /**
  * 路由映射
@@ -64,7 +64,17 @@ export default new Router({
           path: '/adminsManager',
           name: 'adminsManager',
           component: AdminsManager
-        }
+        },
+        {
+          path: '/rolesManager',
+          name: 'rolesManager',
+          component: RolesManager
+        },
+        {
+          path: '/resourcesManager',
+          name: 'resourcesManager',
+          component: ResourcesManager
+        },
       ]
     },
     {

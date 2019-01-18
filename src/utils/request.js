@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getToken } from './auth'
+import { getToken,clearToken } from './auth'
 import store from '../store'
 import router from '../router'
 import { MessageBox } from 'element-ui';
@@ -18,7 +18,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.interceptors.request.use(config => {
     // Do something before request is sent
     const token = getToken()
-    config.headers['X-Token'] = `Token ${token}`
+    config.headers['Authorization'] = `Token ${token}`
     return config;
 }, (error) => {
     // Do something with request error
@@ -41,6 +41,7 @@ axios.interceptors.response.use(resp => {
                 store.dispatch('Logout')
                     .then(
                         d => {
+                            clearToken()
                             router.push('/login')
                         },
                         e => {
