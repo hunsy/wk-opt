@@ -25,7 +25,7 @@
       </el-row>
     </el-form>
 
-    <el-table :data="tableData" fit highlight-current-row style="width: 100%">
+    <el-table :data="tableData" border fit highlight-current-row empty-text="-">
       <el-table-column type="index"></el-table-column>
       <el-table-column prop="name" width="200" label="角色名称"></el-table-column>
       <el-table-column prop="description" label="角色描述"></el-table-column>
@@ -57,14 +57,12 @@
         </template>
       </el-table-column>
     </el-table>
+
     <div class="pagination-container flex-center">
-      <div class="total-num">共{{total}}条</div>
       <el-pagination
-        background
-        :page-sizes="[1,10,20,30, 50]"
         :page-size="pageSize"
         @current-change="handleCurrentChange"
-        layout="prev, pager, next"
+        layout="total, prev, pager, next, jumper"
         :total="total"
       ></el-pagination>
     </div>
@@ -199,9 +197,11 @@ export default {
       this.loadPage();
     },
     addRole() {
+      this.form = {};
       this.dialogFormVisible = true;
     },
     async handleEdit(idx, id) {
+      this.form = {};
       const d = await getRoleInfo(id).catch(e => console.log(e));
       this.form = d;
       this.dialogFormVisible = true;

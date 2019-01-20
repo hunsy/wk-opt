@@ -6,6 +6,7 @@
       <el-breadcrumb-item>权限资源管理</el-breadcrumb-item>
     </el-breadcrumb>
 
+<div class="tree-box">
     <el-tree
       :data="treeData"
       :props="defaultProps"
@@ -15,15 +16,15 @@
       :filter-node-method="filterNode"
       default-expand-all
     >
-      <div class="custom-tree-node" slot-scope="{ node, data }">
+      <div slot-scope="{ node, data }" class="custom-tree-node">
         <span>{{ node.label }}=>({{data.url}})</span>
-        <span class="tree-operate">
+        <span>
           <el-button type="text" size="mini" @click="() => next(data)">添加下级资源</el-button>
           <el-button type="text" size="mini" @click="() => edit(node, data)">编辑资源</el-button>
         </span>
       </div>
     </el-tree>
-
+</div>
     <el-dialog
       title="资源表单"
       @click.native="isSearching=false"
@@ -116,7 +117,7 @@ export default {
     },
     async handleEdit(idx, id) {
       this.form = {};
-      const data = await get(id).catch(error => {
+      const data = await getResourceInfo(id).catch(error => {
         console.log(error);
       });
 
@@ -128,11 +129,11 @@ export default {
         if (valid) {
           console.log("提交表单");
           if (this.form.id) {
-            await update(this.form).catch(error => {
+            await updateResource(this.form).catch(error => {
               this.dialogFormVisible = false;
             });
           } else {
-            await save(this.form).catch(error => {
+            await saveResource(this.form).catch(error => {
               console.log(44, error);
             });
           }
@@ -155,7 +156,7 @@ export default {
     },
     async edit(node, data) {
       this.form = {};
-      const d = await get(data.id).catch(e => {
+      const d = await getResourceInfo(data.id).catch(e => {
         console.log(e);
       });
       this.form = d;
@@ -166,20 +167,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.el-tree {
-  padding-left: 20px;
-  margin-top: 20px;
+.tree-box {
+  padding: 10px 20px;
 }
-
 .custom-tree-node {
-  width: 100%;
-}
-
-.el-tree-node__content {
-    padding: 10px;
-}
-
-.tree-operate {
-  float: right;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-right: 8px;
+  padding-top:7px;
+  padding-bottom: 7px; 
 }
 </style>

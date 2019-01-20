@@ -6,6 +6,7 @@ Vue.use(Router)
 import { Login, Page404, Dashboard, NavSelPage } from '../views/common'
 import Layout from '../views/layout/layout'
 import { AppsManager, AdminsManager, RolesManager, ResourcesManager } from '../views/sm'
+import {WkDashboard} from '../views/wk'
 
 /**
  * 路由映射
@@ -75,6 +76,17 @@ export default new Router({
           name: 'resourcesManager',
           component: ResourcesManager
         },
+      ]
+    },
+    {
+      path: 'wk',
+      component: Layout,
+      children:[
+        {
+          path : '/wkDashboard',
+          name:'wkDashboard',
+          component: WkDashboard
+        }
       ]
     },
     {

@@ -64,13 +64,10 @@
     </el-table>
 
     <div class="pagination-container flex-center">
-      <div class="total-num">共{{total}}条</div>
       <el-pagination
-        background
-        :page-sizes="[1,10,20,30, 50]"
         :page-size="pageSize"
         @current-change="handleCurrentChange"
-        layout="prev, pager, next"
+        layout="total, prev, pager, next, jumper"
         :total="total"
       ></el-pagination>
     </div>
@@ -187,6 +184,7 @@ export default {
       this.loadPage();
     },
     addApp() {
+      this.form = {};
       this.dialogFormVisible = true;
     },
     async handleCfg(id) {
@@ -209,6 +207,7 @@ export default {
       return data;
     },
     async handleEdit(idx, id) {
+      this.form = {};
       const d = await this.loadAppInfo(id);
       if (d) {
         this.code = d.cfg;
@@ -234,6 +233,10 @@ export default {
           console.log("validate error");
         }
       });
+    },
+    clear(formName) {
+      this.$refs[formName].resetFileds();
+      this.form = {};
     }
   }
 };

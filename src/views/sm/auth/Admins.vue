@@ -25,7 +25,7 @@
       </el-row>
     </el-form>
 
-    <el-table :data="tableData" fit highlight-current-row style="width: 100%">
+    <el-table :data="tableData" border fit highlight-current-row empty-text="-">
       <el-table-column type="index"></el-table-column>
       <el-table-column prop="avatarUrl" width="150" label="头像">
         <template slot-scope="scope">
@@ -69,13 +69,10 @@
     </el-table>
 
     <div class="pagination-container flex-center">
-      <div class="total-num">共{{total}}条</div>
       <el-pagination
-        background
-        :page-sizes="[1,10,20,30, 50]"
         :page-size="pageSize"
         @current-change="handleCurrentChange"
-        layout="prev, pager, next"
+        layout="total, prev, pager, next, jumper"
         :total="total"
       ></el-pagination>
     </div>
@@ -248,6 +245,7 @@ export default {
     },
     addAdmin() {
       this.dialogFormVisible = true;
+      this.form = {};
     },
     async loadAdminInfo(id) {
       const data = await getAdminInfo(id).catch(e => {
@@ -256,6 +254,7 @@ export default {
       return data;
     },
     async handleEdit(idx, id) {
+      this.form = {};
       const d = await this.loadAdminInfo(id);
       this.form = d;
       this.dialogFormVisible = true;
@@ -318,6 +317,10 @@ export default {
     clearTransfer() {
       this.roleIds = [];
       this.roles = [];
+    },
+    clear(formName) {
+      this.$refs[formName].resetFileds();
+      this.form = {};
     }
   }
 };

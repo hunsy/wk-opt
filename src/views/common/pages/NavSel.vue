@@ -11,7 +11,7 @@
 
         <el-col :span="8" class="nav-item">
           <el-card shadow="hover" class="nav-item">
-            <router-link to="dashboard"></router-link>
+            <router-link to="/wkDashboard">微课管理</router-link>
           </el-card>
         </el-col>
         <el-col :span="8" class="nav-item">
