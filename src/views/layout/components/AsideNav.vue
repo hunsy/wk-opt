@@ -44,6 +44,36 @@
           <span>权限资源管理</span>
         </el-menu-item>
       </el-submenu>
+
+      <el-menu-item
+        index="wkDashboard"
+        :class="{ 'is_active' : $route.path === '/dashboard'}"
+        :style="{ 'color: rgb(255, 100, 40); background-color: rgb(50, 64, 87);' : $route.path === '/wkDashboard'}"
+      >
+        <font-awesome-icon icon="tachometer-alt"/>
+        <span slot="title">微课概览</span>
+      </el-menu-item>
+
+      <el-submenu index="wk">
+        <template slot="title" class="menu-title">
+          <font-awesome-icon icon="cogs"/>
+          <span>课程管理</span>
+        </template>
+        <el-menu-item index="wkMediaResources">&nbsp;&nbsp;&nbsp;&nbsp;
+          <font-awesome-icon icon="cog"/>
+          <span>媒体文件管理</span>
+        </el-menu-item>
+
+        <el-menu-item index="rolesManager">&nbsp;&nbsp;&nbsp;&nbsp;
+          <font-awesome-icon icon="cog"/>
+          <span>角色管理</span>
+        </el-menu-item>
+
+        <el-menu-item index="resourcesManager">&nbsp;&nbsp;&nbsp;&nbsp;
+          <font-awesome-icon icon="cog"/>
+          <span>权限资源管理</span>
+        </el-menu-item>
+      </el-submenu>
     </el-menu>
   </div>
 </template>
