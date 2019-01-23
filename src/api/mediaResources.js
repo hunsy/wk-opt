@@ -7,3 +7,16 @@ const Base = "/mediaResource";
  * @param {*} medias 
  */
 export const batchSaveMedias = (medias) => request.post(`${Base}/batch`, medias)
+
+/**
+ * 分页查询
+ * 
+ * @param {*} queryInfo 
+ */
+export const getMediaPage = (queryInfo) => request.get(`${Base}/page`, { params: queryInfo })
+
+/**
+ * 更新媒体文件
+ * @param {*} media 
+ */
+export const updateMedia = (media) => request.put(`${Base}`, media)
