@@ -6,7 +6,7 @@ Vue.use(Router)
 import { Login, Page404, Dashboard, NavSelPage } from '../views/common'
 import Layout from '../views/layout/layout'
 import { AppsManager, AdminsManager, RolesManager, ResourcesManager } from '../views/sm'
-import { WkDashboard, WkMediaResources } from '../views/wk'
+import { WkDashboard, WkMediaResources, WkCoursesManager } from '../views/wk'
 
 /**
  * 路由映射
@@ -91,7 +91,12 @@ export default new Router({
           path: '/wkMediaResources',
           name: 'wkMediaResources',
           component: WkMediaResources
-        }
+        },
+        {
+          path: '/wkCourses',
+          name: 'wkCourses',
+          component: WkCoursesManager
+        },
       ]
     },
     {

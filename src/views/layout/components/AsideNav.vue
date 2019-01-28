@@ -60,13 +60,13 @@
           <span>课程管理</span>
         </template>
         <el-menu-item index="wkMediaResources">&nbsp;&nbsp;&nbsp;&nbsp;
-          <font-awesome-icon icon="cog"/>
+          <font-awesome-icon icon="images"/>
           <span>媒体文件管理</span>
         </el-menu-item>
 
-        <el-menu-item index="rolesManager">&nbsp;&nbsp;&nbsp;&nbsp;
-          <font-awesome-icon icon="cog"/>
-          <span>角色管理</span>
+        <el-menu-item index="wkCourses">&nbsp;&nbsp;&nbsp;&nbsp;
+          <font-awesome-icon icon="cube"/>
+          <span>课程管理</span>
         </el-menu-item>
 
         <el-menu-item index="resourcesManager">&nbsp;&nbsp;&nbsp;&nbsp;

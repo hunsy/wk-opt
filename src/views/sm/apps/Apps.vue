@@ -72,7 +72,7 @@
       ></el-pagination>
     </div>
 
-    <el-dialog title="配置信息" v-if="cfgDialogVisiable" :visible.sync="cfgDialogVisiable" width="50%">
+    <el-dialog title="配置信息" v-if="cfgDialogVisiable" :visible.sync="cfgDialogVisiable" width="50%" :modal-append-to-body='false'>
       <p>请输入JSON格式的配置信息</p>
       <codemirror v-model="code" :options="cmOptions"></codemirror>
       <span slot="footer" class="dialog-footer">
@@ -87,6 +87,7 @@
       :visible.sync="dialogFormVisible"
       width="50%"
       @closed="clear('form')"
+      :modal-append-to-body='false'
     >
       <el-form ref="form" :rules="rules" :model="form" label-width="100px">
         <el-form-item label="名称" prop="name" required:true>

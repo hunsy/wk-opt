@@ -2,6 +2,7 @@
   <div id="wkMediaResource" class="main-box">
     <el-breadcrumb separator-class="el-icon-arrow-right" class="bread-box">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>微课管理</el-breadcrumb-item>
       <el-breadcrumb-item>多媒体管理</el-breadcrumb-item>
     </el-breadcrumb>
 
@@ -105,6 +106,7 @@
       v-if="dialogFormVisible"
       :visible.sync="dialogFormVisible"
       width="50%"
+      :modal-append-to-body='false'
     >
       <el-form ref="form" :rules="rules" :model="form" label-width="100px">
         <el-form-item label="资源标题" prop="title" required:true>

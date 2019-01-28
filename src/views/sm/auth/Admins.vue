@@ -84,6 +84,7 @@
       :visible.sync="dialogFormVisible"
       width="50%"
       @closed="clear('form')"
+      :modal-append-to-body='false'
     >
       <el-form ref="form" :rules="rules" :model="form" label-width="100px">
         <el-form-item label="账号" prop="username" required:true>
@@ -116,6 +117,7 @@
       :visible.sync="dialogTransferVisible"
       width="50%"
       @closed="clearTransfer()"
+      :modal-append-to-body='false'
     >
       <el-transfer
         :titles="transferTitles"

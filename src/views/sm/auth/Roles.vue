@@ -74,6 +74,7 @@
       :visible.sync="dialogFormVisible"
       width="50%"
       @closed="clear('form')"
+      :modal-append-to-body='false'
     >
       <el-form ref="form" :rules="rules" :model="form" label-width="100px">
         <el-form-item label="名称" prop="name" required:true>
@@ -97,6 +98,7 @@
       v-if="dialogResourceVisible"
       :visible.sync="dialogResourceVisible"
       width="50%"
+      :modal-append-to-body='false'
     >
       <el-tree
         :data="treeData"
