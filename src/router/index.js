@@ -3,18 +3,39 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import { Login, Page404, Dashboard, NavSelPage } from '../views/common'
+import {
+  Login,
+  Page404,
+  Dashboard,
+  NavSelPage
+} from '../views/common'
 import Layout from '../views/layout/layout'
-import { AppsManager, AdminsManager, RolesManager, ResourcesManager } from '../views/sm'
-import { WkDashboard, WkMediaResources, WkCoursesManager } from '../views/wk'
+import {
+  AppsManager,
+  AdminsManager,
+  RolesManager,
+  ResourcesManager
+} from '../views/sm'
+import {
+  WkDashboard,
+  WkMediaResources,
+  WkCoursesManager
+} from '../views/wk'
+
+import {
+  UsmsAdmins,
+  UsmsMechant,
+  UsmsMerchantWithdrawal,
+  UsmsProduct,
+  UsmsProductInventory
+} from '../views/usms'
 
 /**
  * 路由映射
  */
 export default new Router({
   mode: 'history',
-  routes: [
-    {
+  routes: [{
       "path": '/',
       redirect: '/navSel'
     },
@@ -38,30 +59,25 @@ export default new Router({
     {
       path: '/dashboard',
       component: Layout,
-      children: [
-        {
-          path: '/',
-          name: 'dashboard',
-          component: Dashboard
-        }
-      ]
+      children: [{
+        path: '/',
+        name: 'dashboard',
+        component: Dashboard
+      }]
     },
     {
       path: '/appsManager',
       component: Layout,
-      children: [
-        {
-          path: '/',
-          name: 'appsManager',
-          component: AppsManager
-        }
-      ]
+      children: [{
+        path: '/',
+        name: 'appsManager',
+        component: AppsManager
+      }]
     },
     {
       path: '/auth',
       component: Layout,
-      children: [
-        {
+      children: [{
           path: '/adminsManager',
           name: 'adminsManager',
           component: AdminsManager
@@ -81,8 +97,7 @@ export default new Router({
     {
       path: 'wk',
       component: Layout,
-      children: [
-        {
+      children: [{
           path: '/wkDashboard',
           name: 'wkDashboard',
           component: WkDashboard
@@ -97,6 +112,37 @@ export default new Router({
           name: 'wkCourses',
           component: WkCoursesManager
         },
+      ]
+    },
+    {
+      path: 'usms',
+      component: Layout,
+      children: [{
+          path: '/usmsAdmins',
+          name: 'usmsAdmins',
+          component: UsmsAdmins
+        },
+        {
+          path: '/usmsMerchant',
+          name: 'usmsMerchant',
+          component: UsmsMechant
+        },
+        {
+          path: '/usmsMerchantWithdrawal',
+          name: 'usmsMerchantWithdrawal',
+          component: UsmsMerchantWithdrawal
+        },
+        {
+          path: '/usmsProduct',
+          name: 'usmsProduct',
+          component: UsmsProduct
+        },
+        {
+          path: '/usmsProductInventory',
+          name: 'usmsProductInventory',
+          component: UsmsProductInventory
+        }
+
       ]
     },
     {

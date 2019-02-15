@@ -39,28 +39,28 @@ Object.keys(filters).forEach(key => {
 })
 Vue.config.productionTip = false
 
-//进行登录拦截
-router.beforeEach((to, from, next) => {
-  if (!getToken()) {
-    if (to.path != '/login') {
-      next('/login')
-    } else {
-      next()
-    }
-  } else {
-    if (to.path === '/login') {
-      next('/navSel')
-    } else {
-      store.dispatch("GetAdminInfo").then(
-        d => {
-          console.log("获取管理员信息", d);
-        },
-        e => { }
-      );
-      next()
-    }
-  }
-})
+// //进行登录拦截
+// router.beforeEach((to, from, next) => {
+//   if (!getToken()) {
+//     if (to.path != '/login') {
+//       next('/login')
+//     } else {
+//       next()
+//     }
+//   } else {
+//     if (to.path === '/login') {
+//       next('/navSel')
+//     } else {
+//       // store.dispatch("GetAdminInfo").then(
+//       //   d => {
+//       //     console.log("获取管理员信息", d);
+//       //   },
+//       //   e => { }
+//       // );
+//       next()
+//     }
+//   }
+// })
 
 /* eslint-disable no-new */
 new Vue({

@@ -73,6 +73,31 @@
           <font-awesome-icon icon="cog"/>
           <span>权限资源管理</span>
         </el-menu-item>
+
+        <el-menu-item index="usmsAdmins">&nbsp;&nbsp;&nbsp;&nbsp;
+          <font-awesome-icon icon="cog"/>
+          <span>管理员管理(USMS)</span>
+        </el-menu-item>
+
+        <el-menu-item index="usmsMerchant">&nbsp;&nbsp;&nbsp;&nbsp;
+          <font-awesome-icon icon="cog"/>
+          <span>商户管理(USMS)</span>
+        </el-menu-item>
+
+        <el-menu-item index="usmsMerchantWithdrawal">&nbsp;&nbsp;&nbsp;&nbsp;
+          <font-awesome-icon icon="cog"/>
+          <span>提现管理(USMS)</span>
+        </el-menu-item>
+
+        <el-menu-item index="usmsProduct">&nbsp;&nbsp;&nbsp;&nbsp;
+          <font-awesome-icon icon="cog"/>
+          <span>产品管理(USMS)</span>
+        </el-menu-item>
+
+        <el-menu-item index="usmsProductInventory">&nbsp;&nbsp;&nbsp;&nbsp;
+          <font-awesome-icon icon="cog"/>
+          <span>产品实例管理(USMS)</span>
+        </el-menu-item>
       </el-submenu>
     </el-menu>
   </div>

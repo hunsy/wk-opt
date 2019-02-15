@@ -1,4 +1,6 @@
-import { login, getCurrentAdmin } from '@/api/admin'
+// import { login, getCurrentAdmin } from '@/api/admin'
+import { login, getCurrentAdmin } from '@/api/usms/admin'
+
 import { getToken, setToken, clearToken } from '@/utils/auth'
 
 const user = {
@@ -30,7 +32,6 @@ const user = {
                         err => {
                             reject(err)
                         })
-
             })
         },
         GetAdminInfo({ commit }) {
